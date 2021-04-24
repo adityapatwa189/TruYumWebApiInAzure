@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["TruYumWebApiInAzure/TruYumWebApiInAzure.csproj", "TruYumWebApiInAzure/"]
-RUN dotnet restore "TruYumWebApiInAzure/TruYumWebApiInAzure.csproj"
+COPY ["TruYumWebApiInAzure.csproj", ""]
+RUN dotnet restore "./TruYumWebApiInAzure.csproj"
 COPY . .
-WORKDIR "/src/TruYumWebApiInAzure"
+WORKDIR "/src/."
 RUN dotnet build "TruYumWebApiInAzure.csproj" -c Release -o /app/build
 
 FROM build AS publish
